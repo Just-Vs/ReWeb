@@ -1,0 +1,30 @@
+{
+  "name": "reweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nde server.js"
+    "devStart": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Just-Vs/ReWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Just-Vs/ReWeb/issues"
+  },
+  "homepage": "https://github.com/Just-Vs/ReWeb#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "expess": "^0.0.1-security",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
