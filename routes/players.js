@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Player = require('../models/player')
 
 //All
 router.get('/', (req, res)=> {
@@ -8,12 +9,12 @@ router.get('/', (req, res)=> {
 
 //new
 router.get('/new', (req, res)=> {
-res.render('players/new')
+res.render('players/new', { player: new Player() })
 })
 
 //Create
 router.post('/', (req, res)=> {
-  re.send('Create')
+  res.send('Create')
 })
 
 module.exports = router
