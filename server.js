@@ -6,6 +6,7 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
+const playerRouter = require('./routes/players')
 
 
 app.set('view engine', 'ejs')
@@ -26,5 +27,6 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('connected'))
 
 app.use('/', indexRouter)
+app.use('/players', playerRouter)
 
 app.listen(process.env.PORT || 3000)
