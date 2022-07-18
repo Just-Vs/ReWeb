@@ -25,7 +25,7 @@ router.get('/new', (req, res)=> {
 //Create
 router.post('/', async (req, res) => {
   const player = new Player({
-    Name: req.body.name
+    name: req.body.name
   })
   try{
     const NewPlayer = await player.save()
