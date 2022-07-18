@@ -1,1 +1,12 @@
 All players
+<h2>Players</h2>
+<form class="" action="index.html" method="GET">
+
+  <label>Name</label>
+  <input type="text" name="name" value="<%= searchOptions.name %>">
+  <button type="submit">search</button>
+</form>
+<br>
+<% players.forEach(player => {%>
+  <div><%=player.name %></div>
+  <% }) %>

@@ -1,6 +1,7 @@
 new player
 <h2>New Player</h2>
 <form action="/players" method="POST">
+  <%- include('_form_fields') %>
   <a href="/players">Cancel</a>
   <button type="submit" name="button">Create</button>
 </form>
