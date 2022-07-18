@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
     name: req.body.name
   })
   try{
-    const NewPlayer = await player.save()
+    const newPlayer = await player.save()
     //res.redirect(`players/${newPlayer.id}`)
     res.redirect(`players`)
   } catch{
