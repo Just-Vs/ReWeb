@@ -15,6 +15,8 @@ const methodOverride = require('method-override')
 
 const indexRouter = require('./routes/index')
 const playerRouter = require('./routes/players')
+const loginRouter = require('./routes/login')
+const registerRouter =require('./routes/register')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
@@ -41,5 +43,7 @@ db.once('open', () => console.log('connected'))
 
 app.use('/', indexRouter)
 app.use('/players', playerRouter)
+app.use('/', loginRouter)
+app.use('/', registerRouter)
 
 app.listen(process.env.PORT || 3000)
