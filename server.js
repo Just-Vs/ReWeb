@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-
+const users = []
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
@@ -45,5 +45,21 @@ app.use('/', indexRouter)
 app.use('/players', playerRouter)
 app.use('/', loginRouter)
 app.use('/', registerRouter)
+
+app.post('/register', async (req, res) => {
+  try{
+    const hashedPassword = bcrypt.hash(req.body.password, 10)
+    users.push({
+      id:Date.now().toString(),
+      name: req.body.name,
+      email: req.body.name,
+      password: hashedPassword
+    })
+    res.redirect('/login')
+  } catch{
+    res.redirect('/register')
+  }
+  req.body.name
+})
 
 app.listen(process.env.PORT || 3000)
