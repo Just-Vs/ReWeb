@@ -19,10 +19,11 @@ const playerRouter = require('./routes/players')
 const loginRouter = require('./routes/login')
 const registerRouter =require('./routes/register')
 const initializePassport = require('./passport-config')
-initializePassport(passport,email => {
-  return users.find(user => user.email === email)
+initializePassport(
+  passport,
+  email => users.find(user => user.email === email),
   id => users.find(user => user.id === id)
-})
+)
 
 
 app.set('view engine', 'ejs')
@@ -63,12 +64,12 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 }))
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
-  try{
-    const hashedPassword = bcrypt.hash(req.body.password, 10)
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
     users.push({
-      id:Date.now().toString(),
+      id: Date.now().toString(),
       name: req.body.name,
-      email: req.body.name,
+      email: req.body.email,
       password: hashedPassword
     })
     res.redirect('/login')
