@@ -1,21 +1,13 @@
 const mongoose = require('mongoose')
 
-const playerSchema = new mongoose.Schema({
+const scoreSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   }
-  email: {
+  points: {
     type: String,
     required: true
-  }
-  password: {
-    type: Password,
-    required: true
-  }
-  type: {
-    Boolean: Binary,
-    default: false
   }
 })
 
