@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="game">
+      <div class="easy">
+        <p>Choose odd or even</p>
+        <select name="value" id="val">
+          <option value="odd">odd</option>
+          <option value="even">even</option>
+        </select>
+      </div>
+      <div class="total">
+        <p>Choose total fingers</p>
+        <input type="text" id="total" value="">
+      </div>
+
+      <div class="normal">
+        <p>Choose ammount of fingers</p>
+        <select name="fingers" id="fing">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button type="submit" name="submitgame" onclick="getScores2();">Submit</button>
+      <div class="results">
+          <h3>Your score - <span style="color: blue" id="points"></span></h3>
+
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

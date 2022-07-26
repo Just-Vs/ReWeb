@@ -18,6 +18,7 @@ const indexRouter = require('./routes/index')
 const playerRouter = require('./routes/players')
 const loginRouter = require('./routes/login')
 const registerRouter =require('./routes/register')
+const gameRouter =require('./routes/game')
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
@@ -34,6 +35,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
+app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride('_method'))
@@ -55,7 +58,7 @@ app.use('/', indexRouter)
 app.use('/players', playerRouter)
 app.use('/', loginRouter)
 app.use('/', registerRouter)
-
+app.use('/game', gameRouter)
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
@@ -102,5 +105,8 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
+
+
+
 
 app.listen(process.env.PORT || 3000)

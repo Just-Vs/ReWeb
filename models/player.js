@@ -4,18 +4,31 @@ const playerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
-  }
+  },
   email: {
     type: String,
     required: true
-  }
+  },
   password: {
-    type: Password,
+    type: String,
     required: true
-  }
+  },
   type: {
-    Boolean: Binary,
+    type: Boolean,
     default: false
+  },
+  points:{
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+    ref: 'Score'
+  },
+  picture:{
+    type: String,
+    required: true
+  },
+tournamentPossition: {
+  type: String,
+  required: false
   }
 })
 
