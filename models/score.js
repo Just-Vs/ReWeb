@@ -15,4 +15,4 @@ const scoreSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Score', playerSchema)
+module.exports = mongoose.model('Score', scoreSchema)
