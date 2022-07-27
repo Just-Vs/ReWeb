@@ -2,11 +2,4 @@ qwerty
 <form action="/logout?_method=DELETE" method="POST">
   <button type="button" name="button">logOut</button>
 </form>
-<div>
-  <label>Scores</label>
-  <select name="author">
-  <% scores.forEach(score => { %>
-    <option selected label="<%= score.name %>" value="<%= score.id %>">
-    <% } %>
-  <% }) %>
-  </select>
+<% Score.find({}).each %>

@@ -107,6 +107,4 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 
-console.log(db.find())
-
 app.listen(process.env.PORT || 3000)
