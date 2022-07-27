@@ -9,14 +9,15 @@ router.get('/', async (req, res)=> {
 
 //new
 router.get('/score', (req, res)=> {
-  res.send('score')
+  res.render('score')
 })
 
 //Create
 router.get('/play', async (req, res) => {
   res.render('game')
 })
-
-
+router.get('/play2', async (req, res) => {
+  res.render('game2')
+})
 
 module.exports = router

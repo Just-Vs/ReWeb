@@ -12,3 +12,12 @@ select{
 button{
   margin: 1.5rem;
 }
+p.sub{
+  font-size: 1rem;
+  color: gray;
+  font-style: italic;
+}
+.submit{
+  padding:1.5rem 1.5rem;
+  
+}

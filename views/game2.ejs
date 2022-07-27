@@ -17,28 +17,29 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
+      <div class="normal">
+        <div class="total">
+          <p>Choose total fingers</p>
+          <p class="sub">Default(0)</p>
+          <input type="text" id="total" value="">
+        </div>
 
-      <div class="easy">
-        <p>Choose odd or even</p>
-        <select name="value" id="val">
-          <option value="odd">odd</option>
-          <option value="even">even</option>
-        </select>
       </div>
-      <button type="submit" name="submitgame" onclick="getScores2();">Submit</button>
+      <button type="submit" name="submitgame" onclick="getScores();">Submit</button>
       <div class="results">
           <h3>Your score - <span style="color: blue" id="points">0</span></h3>
           <ul id="result">
 
           </ul>
+          <script type="text/javascript">
+            var scoreLst= []
+            var counter=0
+            localStorage.setItem('playCount', `${counter}`)
+            localStorage.setItem('scoreLst', `${scoreLst}`)
+          </script>
         </div>
 
-  <script type="text/javascript">
-    var scoreLst= []
-    var counter=0
-    localStorage.setItem('playCount', `${counter}`)
-    localStorage.setItem('scoreLst', `${scoreLst}`)
-  </script>
+
     </div>
   </body>
 </html>

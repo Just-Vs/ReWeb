@@ -3,20 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="/script.js"></script>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <div class="game">
-
-
-      <div class="diff">
-        <p>Choose difficulty</p>
-        <select name="difficulty" id="dif">
-          <option value="easy">easy</option>
-          <option value="normal">normal</option>
-        </select>
-      </div>
       <div class="players">
         <p>Choose player ammount</p>
         <select name="players" id="plays">
@@ -26,7 +17,9 @@
           <option value="5">5</option>
         </select>
       </div>
-      <button type="submit" name="submitOptions" onclick="getPreGameValue();"><a href = '/game/play'>Submit</a></button>
+      <p>Choose difficulty</p>
+      <button type="submit" name="submitOptions"  onclick="getPreGameValue();"><a class="submit" href = '/game/play'>Easy</a></button>
+      <button type="submit" name="submitOptions"  onclick="getPreGameValue();"><a class="submit" href = '/game/play2'>Normal</a></button>
     </div>
     </body>
   </html>
