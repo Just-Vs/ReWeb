@@ -23,14 +23,14 @@ function getScores(){
   var msg = ["Player(you)","Fingers: "+playerFingers]
   var scoreLst= localStorage.getItem('scoreLst')
   var counter = parseInt(localStorage.getItem('playCount'), 10)
-
+  console.log(playerGuess)
 
   var points = localStorage.getItem('points')
   if (points == null){
     var points =0
   }
 
-  pointSet(points)
+
   let sum = 0
 
   for (let i=0; i<parseInt(playerValue, 10);i++){
@@ -49,6 +49,7 @@ function getScores(){
         points++
 
     }
+    console.log("sum -"+ sum)
     var outP=msg.toString()
     for(let i = 0; i < outP.length; i++){
       try{
@@ -61,6 +62,7 @@ function getScores(){
     }
     msg.push("Total: "+sum)
     msg.push("Score: "+points)
+        scoreLst=scoreLst+'<li>' +" "+outP+" "+"</li><hr>"
     counter = counter+1
     localStorage.setItem('scoreLst', `${scoreLst}`)
     localStorage.setItem('playCount', `${counter}`)
@@ -72,6 +74,7 @@ function getScores(){
     localStorage.setItem('points', `${points}`)
     console.log(counter)
     localStorage.setItem('playCount', `${counter}`)
+    pointSet(points)
     if(counter==5){
       location.replace("/game/score")
     }
@@ -116,7 +119,7 @@ function getScores2(){
         points++
 
     }
-    pointSet(points)
+
 
     msg.push("Total: "+sum)
     msg.push("Score: "+points)
@@ -140,5 +143,6 @@ function getScores2(){
     document.getElementById('result').innerHTML += '<li>' + outP + '</li><hr>';
     console.log(msg)
     localStorage.setItem('points', `${points}`)
+    pointSet(points)
 
 }
