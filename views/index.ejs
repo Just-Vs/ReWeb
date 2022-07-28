@@ -1,4 +1,6 @@
+<form action="/score" method="GET">
+  <% Score.find({}).each %>
+</form>
 <form action="/logout?_method=DELETE" method="POST">
   <button type="button" name="button">logOut</button>
 </form>
-<% Score.find({}).each %>
