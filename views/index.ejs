@@ -1,6 +1,10 @@
-<% scores.forEach(score => {%>
-  <div><%=score.name %></div>
-  <% }) %>
+<form  action="/authors" method="GET">
+
+</form>
+
 <form action="/logout?_method=DELETE" method="POST">
   <button type="button" name="button">logOut</button>
 </form>
+<% scores.forEach(score => {%>
+  <div><%=score.name %></div>
+<% }) %>
