@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Player = require('../models/player')
+const bcrypt = require('bcrypt')
 
 router.get('/register',checkNotAuthenticated, (req, res)=> {
   res.render('register', { player: new Player()})
