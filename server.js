@@ -1,13 +1,13 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-const Player = require('../models/player')
+
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const users = Player.find({})
+const users = []
 
 const bcrypt = require('bcrypt')
 const flash = require('express-flash')
