@@ -2,11 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+    <meta charset="utf-8">
     <title>Project</title>
   </head>
   <body>
-    <div class="">
-      <%- include('../partials/header.ejs')%>
+    <%- include('../partials/header.ejs')%>
+    <div class="main">
       <%- include('../partials/errorMessage.ejs')%>
       <%- body %>
     </div>

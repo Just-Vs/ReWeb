@@ -1,9 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+
+}
+body{
+	background:#202124;
+	color: white;
+}
+.nav{
+	background: #1E1F25;
+	border-bottom: 1px solid white;
+}
+.nav a{
+  text-transform: uppercase;
+  cursor: pointer;
+	margin: auto;
+  float: Left;
+
+}
+.nav ul{
+	display: flex;
+	width: 100%;
+	height: 50px;
+	margin: auto;
+	max-width: 1000px;
+	justify-content: space-between;
+	text-align: center;
+}
+.nav li{
+	padding: 1rem 2rem 1.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+
+	min-width: 80px;
+	margin: auto;
+}
+
+.nav li a:hover {
+  color: #27262c;
+  text-shadow: 0 -1px 0 white;
+}
 .game{
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  text-align: center;
-  font-size: 1.3rem;
+
 }
 select{
   min-width: 150px
@@ -19,5 +58,34 @@ p.sub{
 }
 .submit{
   padding:1.5rem 1.5rem;
-  
+
+}
+.main{
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+	font-size: 1.3rem;
+}
+.header{
+	margin:30px;
+}
+hr{
+	width: 11rem;
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+	border: none;
+	border-bottom: 3px double #333;
+}
+button{
+	padding:8px 5px;
+	background-color: #202124;
+	border-radius: 6px;
+	border-color: white;
+	color: white;
+	text-decoration: underline;
+}
+button a{
+	color: white;
 }
