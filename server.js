@@ -1,13 +1,13 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-
+const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const users = []
+const users = require('./models/player')
 
 const bcrypt = require('bcrypt')
 const flash = require('express-flash')
@@ -47,7 +47,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 
-const mongoose = require('mongoose')
+
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
