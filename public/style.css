@@ -79,12 +79,13 @@ hr{
 	border-bottom: 3px double #333;
 }
 button{
-	padding:8px 5px;
+	padding:10px 20px;
 	background-color: #202124;
 	border-radius: 6px;
 	border-color: white;
 	color: white;
 	text-decoration: underline;
+
 }
 button a{
 	color: white;

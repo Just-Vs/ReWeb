@@ -7,11 +7,11 @@ const playerSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: false
   },
   password: {
     type: String,
-    required: true
+    required: false
   },
   type: {
     type: Boolean,
@@ -24,7 +24,7 @@ const playerSchema = new mongoose.Schema({
   },
   picture:{
     type: String,
-    required: true
+    required: false
   },
 tournamentPossition: {
   type: String,
