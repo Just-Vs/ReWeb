@@ -8,10 +8,11 @@ router.get('/register',checkNotAuthenticated, (req, res)=> {
 
 
 router.post('/register', async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 10)
   const player = new Player({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password
+    password: hashedPassword
   })
   try{
     const newPlayer = await player.save()
