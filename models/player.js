@@ -7,11 +7,11 @@ const playerSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: false
+    required: true
   },
   password: {
     type: String,
-    required: false
+    required: true
   },
   type: {
     type: Boolean,
