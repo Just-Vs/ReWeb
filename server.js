@@ -1,13 +1,13 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-
+const Player = require('../models/player')
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const users = []
+const users = await Player.find({})
 
 const bcrypt = require('bcrypt')
 const flash = require('express-flash')
@@ -66,21 +66,6 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   failureFlash: true
 }))
 
-app.post('/register', checkNotAuthenticated, async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    users.push({
-      id: Date.now().toString(),
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword
-    })
-    res.redirect('/login')
-  } catch{
-    res.redirect('/register')
-  }
-  req.body.name
-})
 
 app.delete('/logout', function (req, res, next) {
   req.logOut(function (err) {
