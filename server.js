@@ -7,7 +7,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const users = await Player.find({})
+const users = Player.find({})
 
 const bcrypt = require('bcrypt')
 const flash = require('express-flash')
