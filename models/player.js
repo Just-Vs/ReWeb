@@ -12,23 +12,6 @@ const playerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
-  type: {
-    type: Boolean,
-    default: false
-  },
-  points:{
-    type: mongoose.Schema.Types.ObjectId,
-    required: false,
-    ref: 'Score'
-  },
-  picture:{
-    type: String,
-    required: false
-  },
-tournamentPossition: {
-  type: String,
-  required: false
   }
 })
 

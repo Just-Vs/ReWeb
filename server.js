@@ -1,15 +1,17 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-const mongoose = require('mongoose')
+const
+ mongoose = require('mongoose')
 const express = require('express')
 const app = express()
+const bcrypt = require('bcrypt')
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const users = require('./models/player')
 
-const bcrypt = require('bcrypt')
+
+
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -25,7 +27,7 @@ initializePassport(
   email => users.find(user => user.email === email),
   _id => users.find(user => user._id === _id)
 )
-
+const users = require('./models/player')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
@@ -59,14 +61,15 @@ app.use('/players', playerRouter)
 app.use('/', registerRouter)
 app.use('/game', gameRouter)
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login',
-  failureFlash: true
-}))
+
 app.get('/login',checkNotAuthenticated, (req, res)=> {
   res.render('login')
 })
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+  successRedirect: '/game',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
 
 app.delete('/logout', function (req, res, next) {
   req.logOut(function (err) {
