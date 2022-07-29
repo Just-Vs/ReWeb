@@ -4,6 +4,8 @@ if (process.env.NODE_ENV !== 'production') {
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
+const flash = require('express-flash')
+const session = require('express-session')
 const bcrypt = require('bcrypt')
 const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
@@ -11,22 +13,37 @@ const passport = require('passport')
 
 
 
-const flash = require('express-flash')
-const session = require('express-session')
+
 const methodOverride = require('method-override')
 const Player = require('./models/player')
+
 
 const indexRouter = require('./routes/index')
 const playerRouter = require('./routes/players')
 const registerRouter =require('./routes/register')
 const gameRouter =require('./routes/game')
+
 const initializePassport = require('./passport-config')
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  _id => users.find(user => user._id === _id)
-)
-const users = require('./models/player')
+
+
+async function getData(){
+
+  let searchOptions = {}
+
+  const users = [{"_id":"1659040347600","name":"adam","email":"adam@w","password":"$2b$10$ercnNc5kITf1x1qw/PfWo.52pyV/eVGY3wbzHKyR5bhBUgjqdCO0."}]
+  console.log("user="+users)
+
+
+  initializePassport(
+    passport,
+    email => users.find(user => user.email === email),
+    _id => users.find(user => user._id === _id)
+  )
+
+}
+
+getData()
+
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
@@ -36,6 +53,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
+
 
 app.use(express.static(__dirname + '/public'))
 app.use(passport.initialize())
@@ -61,6 +79,11 @@ app.use('/', registerRouter)
 app.use('/game', gameRouter)
 
 
+app.get('/user', checkAuthenticated, (req, res) => {
+  res.render('user.ejs', { name: req.user.name })
+})
+
+
 app.get('/login',checkNotAuthenticated, (req, res)=> {
   res.render('login')
 })
@@ -69,6 +92,7 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true
 }))
+
 
 app.delete('/logout', function (req, res, next) {
   req.logOut(function (err) {
@@ -89,7 +113,7 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('/')
+    return res.redirect('/user')
   }
   next()
 }
