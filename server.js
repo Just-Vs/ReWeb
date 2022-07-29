@@ -13,17 +13,17 @@ const bcrypt = require('bcrypt')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
+const Player = require('./models/player')
 
 const indexRouter = require('./routes/index')
 const playerRouter = require('./routes/players')
-const loginRouter = require('./routes/login')
 const registerRouter =require('./routes/register')
 const gameRouter =require('./routes/game')
 const initializePassport = require('./passport-config')
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
+  _id => users.find(user => user._id === _id)
 )
 
 
@@ -56,7 +56,6 @@ db.once('open', () => console.log('connected'))
 
 app.use('/', indexRouter)
 app.use('/players', playerRouter)
-app.use('/', loginRouter)
 app.use('/', registerRouter)
 app.use('/game', gameRouter)
 
@@ -65,7 +64,9 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true
 }))
-
+app.get('/login',checkNotAuthenticated, (req, res)=> {
+  res.render('login')
+})
 
 app.delete('/logout', function (req, res, next) {
   req.logOut(function (err) {
@@ -90,6 +91,5 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
-
 
 app.listen(process.env.PORT || 3000)

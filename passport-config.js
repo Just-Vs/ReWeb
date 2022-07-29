@@ -20,10 +20,8 @@ function initialize(passport, getUserByEmail, getUserById) {
   }
 
   passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
-  passport.serializeUser((user, done) => done(null, user.id))
-  passport.deserializeUser((id, done) => {
-    return done(null, getUserById(id))
-  })
+  passport.serializeUser((user, done) => done(null, user._id))
+  passport.deserializeUser((_id, done) =>  done(null, getUserById(_id)))
 }
 
 module.exports = initialize
