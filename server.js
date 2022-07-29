@@ -1,8 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-const
- mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
@@ -49,8 +48,8 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }))
 
 
-
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.log('connected'))
